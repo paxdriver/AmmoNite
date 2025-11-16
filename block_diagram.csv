@@ -1,0 +1,24 @@
+## csv import configuration
+# labelField=Label
+# parentField=Parent
+# shapeField=Shape
+# textField=Data
+# connect=true
+# linkParent=true
+# ignoreEmpty=true
+# vertexStyle=rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;
+# edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#000000;strokeWidth=1;
+# layout=hierarchicalHorizontal;levelSpacing=120;nodeSpacing=40;
+## data table starts below
+ID,Label,Parent,Shape,Data
+ELEC,Electrolysis & Air Separation,,ellipse,[Inputs]\n•21 MWh/d electricity\n•0.8 m³ DI water\n•ambient air\n\n[Outputs]\n•H₂ 375 kg/d\n•O₂ 3 t/d → WWTP\n•N₂ 1.75 t/d → Haber–Bosch\n\n[Equip≈ 8.4 M CAD]\n[OPEX≈ 9 k CAD/d]
+HB,Haber–Bosch (Ammonia),ELEC,rectangle,[Inputs]\n•H₂ 375 kg/d •N₂ 1.75 t/d\n[Outputs]\n•NH₃ 2.1 t/d •Heat 350–450 °C\nN₂+3H₂ → 2NH₃\n[Equip≈ 31 M CAD]\n[OPEX≈ 4 k CAD/d]
+HNO3,Nitric Acid (Ostwald),HB,rectangle,NH₃ + 2 O₂ → HNO₃ + H₂O (3.9 t/d) Steam 2.36 MWhₜh/d
+AN,Ammonium Nitrate Neutralizer,HNO3,rectangle,NH₃ + HNO₃ → NH₄NO₃ (5 t/d)
+MED,M.E.D. Desalination,AN,rectangle,Feed 292 m³/d → 102 m³ water + 190 m³ brine (steam + waste heat)
+BRINE,Brine Storage & Loading,MED,rectangle,190 m³/d brine → 8.7 t/d NaCl (storage)
+MG,Mg Precipitation & Binder,BRINE,rectangle,Mg(OH)₂ 0.63 t/d → Binder 1.1 t/d (0.44 t CO₂ bound)
+WWTP,WWTP Integration,MED,rectangle,O₂ 3 t/d → aeration; CO₂ → binder carbonation
+BACKUP,Backup Power & Thermal Storage,AN,rectangle,1 MWe NH₃ genset + 3 MWhₜh TES
+CTRL,Control / Safety / Lab,AN,rectangle,I&C / QA / EHS systems
+OUT,Outputs Summary,AN,ellipse,AN 5 t/d; Water 102 m³/d; Binder 1.1 t/d; NaCl 8.7 t/d; O₂ to WWTP (Total OPEX ≈ 27.9 k CAD/d)
