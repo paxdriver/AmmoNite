@@ -51,7 +51,7 @@ class Inputs:
     o2_demand_kg_per_m3_wwtp: float = 0.25
 
     # Backup (critical load ride-through)
-    critical_load_kW: float = 250   # NOTE: only fractional value of plant's load is being used for critical kW
+    # critical_load_kW: float = 250   # NOTE: only fractional value of plant's load is being used for critical kW
                                     #       Consider later adding option for fixed critical load value if needed.
     
     # Backup sizing (fraction of plant electrical load)
@@ -154,7 +154,7 @@ def size(i: Inputs) -> Dict[str, float]:
     med_feed_m3pd = med_m3pd / max(1e-6, i.med_recovery)
     med_brine_m3pd = med_feed_m3pd - med_m3pd
     # salts: 1 g/L == 1 kg/m3 → t/day = (g/L * m3/day)/1000
-    tds_tpd = i.tds_g_per_L * med_feed_m3pd / KW_PER_MW.0
+    tds_tpd = i.tds_g_per_L * med_feed_m3pd / KW_PER_MW
     nacl_tpd = tds_tpd * i.nacl_mass_frac_in_tds
     mg_kgpd = i.mg_g_per_L * med_feed_m3pd
     mg_captured_kgpd = mg_kgpd * i.mg_recovery_frac
