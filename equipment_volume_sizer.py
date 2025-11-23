@@ -7,6 +7,7 @@
 
 from typing import Dict
 from AN_system_anchoring_sizer import Inputs, size, KW_PER_MW
+from cli_utils import br
 
 # ---------- Physical / environmental assumptions (tunable) ----------
 
@@ -172,8 +173,6 @@ def volume_sizer(i: Inputs) -> Dict[str, float]:
 
 
 if __name__ == "__main__":
-    def br():
-        print("-" * 40)
 
     # Example: community-scale module (5 t/d AN)
     example_inputs = Inputs(
