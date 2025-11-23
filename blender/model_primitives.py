@@ -161,5 +161,14 @@ def build_group(tag, x_base):
 # --- Create all three groups ------------------------------------------------
 for tag, xoffset in GROUPS.items():
     build_group(tag, xoffset)
+    
+# Set the objects at the same floor level, despite centered origins
+for obj in bpy.data.objects:
+    if obj.type == 'MESH':
+        bpy.context.view_layer.objects.active = obj
+        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')  # move origin to bounds center
+        # shift mesh upward so base is on Z=0
+        min_z = min((v.co.z for v in obj.data.vertices))
+        obj.location.z -= min_z
 
 print("✔ Facility primitives created.  Objects grouped at X offsets:", GROUPS)
