@@ -311,3 +311,7 @@ SIZING SHORTCUTS:
 		≈6,200 ha/yr at 100 kg N/ha
 		≈4,100 ha/yr at 150 kg N/ha
 		≈12,000 ha/yr at 50 kg N/ha
+
+ Energy:
+	- if AN is diverted to fuel, energy content is: 	0.425 t × 1.81 MWh/t ≈ 0.77 MWh electricity equivalent per t AN.
+	- 
