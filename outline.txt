@@ -1,452 +1,313 @@
-shows inputs, processes, key chemistry and daily quantities at the MVP scale (≈5 t/day AN), with per‑block equipment (procurement) costs and deliberately conservative operating cost notations you can paste on the diagram.
+shows inputs, processes, key chemistry and daily quantities at the MVP scale (≈5 t/day AN), with per‑block equipment (procurement) costs and deliberately conservative operating cost notations
 
 Assumptions for cost notations (pessimistic)
-
-
 - Electricity price used in notations: 120 CAD/MWh
-
 - Labor: 20 FTE total at 30 CAD/h, +40% burden, +10% training/overtime → ≈370 CAD per FTE‑day
-
 - Maintenance spares/repairs: 4% of procurement capex per year → ≈15,900 CAD/day at this scale
-
 - Catalysts amortization: 400 CAD/day (mostly nitric gauze)
-
 - Chemicals/consumables: 1,000 CAD/day
-
 - Compliance/inspections/training: 400 CAD/day
-
 - Water/sewer: 80 CAD/day; brine yard ops: 60 CAD/day
-
 - Total pessimistic OPEX/day target used for allocations: ≈27,900 CAD/day
-
 - Procurement costs shown per block are “equipment only” (no buildings/installation). Add 35% on each block for freight/commissioning/volatility, and keep a plant‑level 20% reserve on top if you want to be even harsher.
 
 Inputs (daily, MVP)
-
-
 - Electricity: ≈21.0 MWh
-
 - Seawater to MED: ≈292 m3
-
 - DI water (electrolysis): ≈0.8 m3
-
 - Air for N2/NOx: ambient (not metered)
-
 - Optional CO2 from WWTP biogas cleanup to binder curing
 
+
 Process blocks with notations
-
-
 1. Electrolysis + N2 supply
 
+ Function: Make H2 for NH3; O2 for WWTP; N2 for Haber–Bosch
+	Chemistry:
+		- Water splitting: 2 H2O → 2 H2 + O2
+		- Air separation: air → N2 (PSA/membrane)
 
-- Function: Make H2 for NH3; O2 for WWTP; N2 for Haber–Bosch
+	Daily quantities:
+		- H2 ≈ 375 kg; O2 ≈ 3.0 t; N2 ≈ 1.75 t
+		- DI water ≈ 0.8 m3
+		- Electricity ≈ 19.9 MWh
+		- Waste heat (60–80 C): ≈ 3.75 MWhth (to MED)
 
-- Chemistry:
-	- Water splitting: 2 H2O → 2 H2 + O2
+	Equipment (procurement, CAD):
+		- PEM electrolyzers (≈0.9 MWe skid): 1.8M
+		- DI water plant (RO/EDI/UV): 1.2M
+		- N2 PSA/membrane + compressor/dryer: 1.2M
+		- Allocated piping/valves/regulators: 2.0M
+		- Block subtotal base: 6.2M; +35% adders: 8.4M
 
-	- Air separation: air → N2 (PSA/membrane)
-
-
-- Daily quantities:
-	- H2 ≈ 375 kg; O2 ≈ 3.0 t; N2 ≈ 1.75 t
-
-	- DI water ≈ 0.8 m3
-
-	- Electricity ≈ 19.9 MWh
-
-	- Waste heat (60–80 C): ≈ 3.75 MWhth (to MED)
-
-
-- Equipment (procurement, CAD):
-	- PEM electrolyzers (≈0.9 MWe skid): 1.8M
-
-	- DI water plant (RO/EDI/UV): 1.2M
-
-	- N2 PSA/membrane + compressor/dryer: 1.2M
-
-	- Allocated piping/valves/regulators: 2.0M
-
-	- Block subtotal base: 6.2M; +35% adders: 8.4M
-
-
-- Operating notes (per day, pessimistic):
-	- Electricity: ≈ 19.9 × 120 ≈ 2,390 CAD
-
-	- Maintenance share: ≈ 5,005 CAD
-
-	- Labor: 4 FTE → ≈ 1,480 CAD
-
-	- Chemicals/consumables (DI, filters): ≈ 100 CAD
-
-	- Block OPEX/day (incl. shares): ≈ 9,000 CAD
-
+	Operating notes (per day, pessimistic):
+		- Electricity: ≈ 19.9 × 120 ≈ 2,390 CAD
+		- Maintenance share: ≈ 5,005 CAD
+		- Labor: 4 FTE → ≈ 1,480 CAD
+		- Chemicals/consumables (DI, filters): ≈ 100 CAD
+		- Block OPEX/day (incl. shares): ≈ 9,000 CAD
 
 
 1. Haber–Bosch (ammonia synthesis)
+Chemistry: N2 + 3 H2 → 2 NH3 (350–450 C, 150–250 bar, Fe catalyst)
 
+ Daily quantities: NH3 ≈ 2.13 t
 
-- Chemistry: N2 + 3 H2 → 2 NH3 (350–450 C, 150–250 bar, Fe catalyst)
-
-- Daily quantities: NH3 ≈ 2.13 t
-
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Packaged micro Haber–Bosch (compressors/loop): 18.0M
-
 	- NH3 storage bullet (≈100 m3): 1.5M
-
 	- Allocated piping/valves/regulators: 3.5M
-
 	- Block subtotal base: 23.0M; +35%: 31.1M
 
-
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity (HB aux): ≈ 0.53 MWh → ≈ 64 CAD
-
 	- Maintenance share: ≈ 2,225 CAD
-
 	- Catalysts amortization share: ≈ 120 CAD
-
 	- Labor: 4 FTE → ≈ 1,480 CAD
-
 	- Block OPEX/day: ≈ 4,000 CAD
 
 
 
-1. Ostwald (nitric acid, tail‑gas DeNOx)
+2. Ostwald (nitric acid, tail‑gas DeNOx) 
+Chemistry (overall): NH3 + 2 O2 → HNO3 + H2O; NO/NO2 absorption
 
-
-- Chemistry (overall): NH3 + 2 O2 → HNO3 + H2O; NO/NO2 absorption
-
-- Daily quantities:
+ Daily quantities:
 	- HNO3 (100% basis) ≈ 3.94 t
-
 	- Steam export (180–250 C) ≈ 2.36 MWhth (to MED)
 
-
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Micro nitric unit (burner/converter/absorber): 12.0M
-
 	- Tail‑gas DeNOx + CEMS + stack: 1.0M
-
 	- Allocated piping/valves/regulators: 3.0M
-
 	- Block subtotal base: 16.0M; +35%: 21.6M
 
-
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity (acid aux): ≈ 0.39 MWh → ≈ 47 CAD
-
 	- Maintenance share: ≈ 2,780 CAD
-
 	- Catalysts amortization share (Pt/Rh gauze): ≈ 280 CAD
-
 	- Labor: 4 FTE → ≈ 1,480 CAD
-
 	- Compliance share: ≈ 120 CAD
-
 	- Block OPEX/day: ≈ 4,700 CAD
 
 
 
-1. AN neutralization/granulation
+3. AN neutralization/granulation (Chemistry: HNO3 + NH3 → NH4NO3)
 
+ Daily quantities: AN ≈ 5.0 t (solution or prills)
 
-- Chemistry: HNO3 + NH3 → NH4NO3
-
-- Daily quantities: AN ≈ 5.0 t (solution or prills)
-
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Neutralizer/concentrator/granulation: 3.0M
-
 	- Allocated piping/valves/regulators: 1.5M
-
 	- Block subtotal base: 4.5M; +35%: 6.1M
 
-
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity: minimal (included in site misc)
-
 	- Maintenance share: ≈ 1,110 CAD
-
 	- Labor: 2 FTE → ≈ 740 CAD
-
 	- Block OPEX/day: ≈ 1,900 CAD
 
 
 
-1. Seawater intake + MED desalination
+4. Seawater intake + MED desalination
+Function: Potable water and heat sink for waste heat/steam
 
-
-- Function: Potable water and heat sink for waste heat/steam
-
-- Quantities (per day):
+ Quantities (per day):
 	- Product water ≈ 102 m3; feed ≈ 292 m3; brine ≈ 190 m3
-
 	- Heat to MED: ≈ 6.1 MWhth (3.75 from electrolyzers + 2.36 from nitric)
 
 
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Intake (screens/pumps/duplex/Ti piping): 1.5M
-
 	- MED (≈100 m3/d, Ti exchangers): 2.5M
-
 	- Allocated piping/valves/regulators: 1.5M
-
 	- Block subtotal base: 5.5M; +35%: 7.4M
 
 
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity (pumps/controls): ≈ 0.20 MWh → ≈ 24 CAD
-
 	- Maintenance share: ≈ 1,270 CAD
-
 	- Labor: 1 FTE → ≈ 370 CAD
-
 	- Antiscalant/chemicals: ≈ 150 CAD
-
 	- Block OPEX/day: ≈ 1,800 CAD
 
 
 
-1. Brine storage and loading (for winter road use)
+5. Brine storage and loading (for winter road use)
+ Quantities (per day): Brine ≈ 190 m3; salt in feed ≈ 10.2 t/d; NaCl potential ≈ 8.7 t/d
 
-
-- Quantities (per day):
-	- Brine ≈ 190 m3; salt in feed ≈ 10.2 t/d; NaCl potential ≈ 8.7 t/d
-
-
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Brine tanks (bolted glass‑lined, ≈6,000 m3 total): 4.0M
-
 	- Loading rack, metering, yard piping: 0.5M
-
 	- Block subtotal base: 4.5M; +35%: 6.1M
 
-
-- Operating notes (per day):
+ Operating notes (per day):
 	- Maintenance share: ≈ 480 CAD
-
 	- Labor: 0.5 FTE → ≈ 185 CAD
-
 	- Yard ops (power, sampling): ≈ 60 CAD
-
 	- Block OPEX/day: ≈ 725 CAD
 
 
 
-1. Mg precipitation + Mg‑binder line (construction materials)
-
-
-- Chemistry:
+6. Mg precipitation + Mg‑binder line (construction materials)
+ Chemistry:
 	- Mg2+ + 2OH– → Mg(OH)2(s)
-
 	- Mg(OH)2 + CO2 (curing) → basic Mg carbonates (CO2 bound)
 
 
-- Quantities (per day):
+ Quantities (per day):
 	- Mg in feed ≈ 377 kg; captured (70%) ≈ 264 kg
-
 	- Mg(OH)2 produced ≈ 633 kg; binder ≈ 1.14 t
-
 	- CO2 uptake potential ≈ 0.44 t (use WWTP biogas CO2)
 
 
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Reactors/clarifier/thickener/filter press: 3.0M
-
 	- Binder line (mixer/extruder/press/curing): 5.0M
-
 	- CO2 skid (cleanup/compression): 1.5M
-
 	- Allocated piping/valves/regulators: 1.4M
-
 	- Block subtotal base: 10.9M; +35%: 14.7M
 
 
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity: ≈ 0.05 MWh → ≈ 6 CAD
-
 	- Maintenance share: ≈ 1,430 CAD (precip + binder)
-
 	- Chemicals (pH control, minor additives): ≈ 350 CAD
-
 	- Labor: 1.5 FTE → ≈ 555 CAD
-
 	- Block OPEX/day: ≈ 2,340 CAD
 
 
 
-1. Small oxidants for water/WWTP (hypochlorite + ozone)
-
-
-- Quantities (per day):
+7. Small oxidants for water/WWTP (hypochlorite + ozone)
+ Quantities (per day):
 	- Hypochlorite sized to dose only your product water and any WWTP polishing (no bulk chlorine)
 
-
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- Electro‑hypochlorite skid + day tanks: 0.4M
-
 	- Ozone generator + contactor: 0.8M
-
 	- Allocated piping/valves: 0.2M
-
 	- Block subtotal base: 1.4M; +35%: 1.9M
 
-
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity: ≈ 0.01 MWh → ≈ 1 CAD
-
 	- Maintenance share: ≈ 210 CAD
-
 	- Chemicals: ≈ 100 CAD
-
 	- Labor: 0.3 FTE → ≈ 110 CAD
-
 	- Block OPEX/day: ≈ 420 CAD
 
 
 
-1. Backup power and thermal smoothing
-
-
-- Equipment (procurement, CAD):
+8. Backup power and thermal smoothing
+ Equipment (procurement, CAD):
 	- Ammonia‑fueled genset ≈1 MWe + SCR: 3.0M
-
 	- Flywheel (50–100 kWh): 0.4M
-
 	- Rock/sand packed‑bed TES (≈3 MWhth) + blowers: 0.6M
-
 	- HX/cooling skid: 1.0M
-
 	- Allocated piping: 0.2M
-
 	- Block subtotal base: 5.2M; +35%: 7.0M
 
 
-- Operating notes (per day):
+ Operating notes (per day):
 	- Maintenance share: ≈ 640 CAD
-
 	- Labor: 0.8 FTE → ≈ 300 CAD
-
 	- Fuel for tests (NH3) episodic; negligible in steady operation
-
 	- Block OPEX/day: ≈ 940 CAD
 
 
-
-1. O2 pipeline to WWTP and integration
-
-
-- Quantities (per day):
+9. O2 pipeline to WWTP and integration
+ Quantities (per day):
 	- O2 available up to ≈ 3.0 t; use as supplemental aeration only
-
 	- Supports ≈ 12,000 m3/d aeration load at 0.25 kg O2/m3 if fully used
 
 
-- Equipment (procurement, CAD):
+ Equipment (procurement, CAD):
 	- O2 compression/buffer + ~500 m stainless pipeline: 3.0M
-
 	- +35%: 4.05M
 
 
-- Operating notes (per day):
+  Operating notes (per day):
 	- Maintenance share: ≈ 480 CAD
-
 	- Labor: 0.5 FTE → ≈ 185 CAD
-
 	- Block OPEX/day: ≈ 665 CAD
 
 
 
-1. Controls, electrical, safety, lab, and mobile equipment
-
-
-- Equipment (procurement, CAD):
+10. Controls, electrical, safety, lab, and mobile equipment
+ Equipment (procurement, CAD):
 	- DCS/SIS/PLCs/analyzers: 3.0M
-
 	- Electrical BOP (MCC/switchgear/UPS): 2.0M
-
 	- Firewater/foam/scrubbers/deluge: 1.2M
-
 	- Lab instruments: 0.8M
-
 	- Mobile gear (forklift/telehandler/yard EV/chargers): 1.2M
-
 	- Block subtotal base: 8.2M; +35%: 11.1M
 
 
-- Operating notes (per day):
+ Operating notes (per day):
 	- Electricity (site balance): ≈ 0.10 MWh → ≈ 12 CAD
-
 	- Maintenance share: ≈ 320 CAD
-
 	- Labor: 1 FTE lab/EHS + 0.5 FTE admin → ≈ 555 CAD
-
 	- Compliance/training share: ≈ 280 CAD
-
 	- Lab reagents/consumables: ≈ 100 CAD
-
 	- Block OPEX/day: ≈ 1,270 CAD
 
 
-Inter‑block flows (daily, to label arrows)
+ Inter‑block flows (daily, to label arrows)
+	- H2 (Electrolysis → Haber–Bosch): ≈ 375 kg/d
+	- N2 (ASU/PSA → Haber–Bosch): ≈ 1.75 t/d
+	- NH3 (HB → Nitric): ≈ 1.06 t/d
+	- HNO3 (Nitric → AN neutralizer): ≈ 3.94 t/d (100% basis)
+	- NH3 (HB → AN neutralizer): ≈ 1.06 t/d
+	- O2 (Electrolysis → WWTP aeration): up to ≈ 3.0 t/d (throttle to demand)
+	- Steam/heat (Nitric → MED): ≈ 2.36 MWhth/d
+	- Waste heat (Electrolysis → MED): ≈ 3.75 MWhth/d
+	- Seawater (Intake → MED): ≈ 292 m3/d
+	- Brine (MED → Brine storage): ≈ 190 m3/d
+	- Mg(OH)2 slurry (Precip → Binder): ≈ 0.63 t/d
+	- CO2 (WWTP digester → Binder curing): up to ≈ 0.44 t/d uptake potential
 
+Outputs summary (daily, MVP):
+	Ammonium nitrate: ≈ 5.0 t/d
+		- Pessimistic allocated OPEX share: ≈ 19,500 CAD/day → ≈ 3,900 CAD/t AN
 
-- H2 (Electrolysis → Haber–Bosch): ≈ 375 kg/d
+	Potable water: ≈ 102 m3/d
+		- Pessimistic allocated OPEX share: ≈ 5,600 CAD/day → ≈ 55 CAD/m3
 
-- N2 (ASU/PSA → Haber–Bosch): ≈ 1.75 t/d
+	O2 to WWTP: up to ≈ 3.0 t/d (supplemental; no price assumed)
 
-- NH3 (HB → Nitric): ≈ 1.06 t/d
+	Mg‑binder: ≈ 1.14 t/d (CO2 bound ≈ 0.44 t/d)
+		- Pessimistic allocated OPEX share (binder sub‑block): ≈ 1,100 CAD/day → ≈ 970 CAD/t
 
-- HNO3 (Nitric → AN neutralizer): ≈ 3.94 t/d (100% basis)
-
-- NH3 (HB → AN neutralizer): ≈ 1.06 t/d
-
-- O2 (Electrolysis → WWTP aeration): up to ≈ 3.0 t/d (throttle to demand)
-
-- Steam/heat (Nitric → MED): ≈ 2.36 MWhth/d
-
-- Waste heat (Electrolysis → MED): ≈ 3.75 MWhth/d
-
-- Seawater (Intake → MED): ≈ 292 m3/d
-
-- Brine (MED → Brine storage): ≈ 190 m3/d
-
-- Mg(OH)2 slurry (Precip → Binder): ≈ 0.63 t/d
-
-- CO2 (WWTP digester → Binder curing): up to ≈ 0.44 t/d uptake potential
-
-Outputs summary (daily, MVP)
-
-
-- Ammonium nitrate: ≈ 5.0 t/d
-	- Pessimistic allocated OPEX share: ≈ 19,500 CAD/day → ≈ 3,900 CAD/t AN
-
-
-- Potable water: ≈ 102 m3/d
-	- Pessimistic allocated OPEX share: ≈ 5,600 CAD/day → ≈ 55 CAD/m3
-
-
-- O2 to WWTP: up to ≈ 3.0 t/d (supplemental; no price assumed)
-
-- Mg‑binder: ≈ 1.14 t/d (CO2 bound ≈ 0.44 t/d)
-	- Pessimistic allocated OPEX share (binder sub‑block): ≈ 1,100 CAD/day → ≈ 970 CAD/t
-
-
-- Brine to storage: ≈ 190 m3/d (≈ 8.7 t/d NaCl potential)
-	- Stored and shipped seasonally at buyer’s expense
+	Brine to storage: ≈ 190 m3/d (≈ 8.7 t/d NaCl potential)
+		- Stored and shipped seasonally at buyer’s expense
 
 
 Notes and cautions
+	! Not closed loop: nitric tail‑gas is treated and vented; building ventilation and condenser vents exist.
+	! O2 to WWTP must remain supplemental; throttle with flow control so you don’t oversupply.
+	! Keep hypochlorite generation tiny—only for your water/WWTP polishing doses.
+	! The above procurement costs are “base +35% adders”; applying an extra plant‑level 20% volatility reserve will push totals higher (intentionally pessimistic).
+	! The OPEX allocations intentionally embed a high maintenance burden (4% of procurement/year) and full labor at 20 FTE.
 
 
-- Not closed loop: nitric tail‑gas is treated and vented; building ventilation and condenser vents exist.
 
-- O2 to WWTP must remain supplemental; throttle with flow control so you don’t oversupply.
+SIZING SHORTCUTS:
+ 1 t/day of AN needs ≈ 4.1 MWh/day of electricity and ≈ 75 kg/day of H₂.
+ Electrolyzer ≈ 0.16 MW per 1 t/day AN
+ Electricity ≈ 4.1 MWh/day per 1 t/day AN
 
-- Keep hypochlorite generation tiny—only for your water/WWTP polishing doses.
+ Fertilizer: Commercial AN is about 34 % N by mass (1 t of AN → ≈ 340 kg N)
+	Typical N application (order‑of‑magnitude):
+		low‑input grains: 	50 kg N/ha/yr
+		moderate: 			100–150 kg N/ha/yr
+		high‑intensity: 	200 kg N/ha/yr
 
-- The above procurement costs are “base +35% adders”; applying an extra plant‑level 20% volatility reserve will push totals higher (intentionally pessimistic).
+	Which fertilizes roughly:
+		At 100 kg N/ha: 1 t AN fertilizes ≈3.4 ha.
+		At 150 kg N/ha: ≈2.3 ha.
+		At 50 kg N/ha (poorer soils / smallholders): ≈6.8 ha.
 
-- The OPEX allocations intentionally embed a high maintenance burden (4% of procurement/year) and full labor at 20 FTE.
+	For 5 t/day AN → 1,825 t/yr: N = 1,825 × 0.34 ≈ 620 t N/yr
+
+	Which can cover a district, but not a whole Province, for example:
+		≈6,200 ha/yr at 100 kg N/ha
+		≈4,100 ha/yr at 150 kg N/ha
+		≈12,000 ha/yr at 50 kg N/ha
