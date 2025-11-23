@@ -1,0 +1,269 @@
+BUILDING GEOMETRY - ("community plant")
+- Clear height: 10 m.
+- Hall length × width: ~ 35 m × 25 m (≈ 875 m² main hall).
+- Outdoor footprint: solar field (~ 0.6 ha) + sand bed (~ 4 m × 4 m cylinder) + NaCl pile (~ 10 m × 10 m).
+
+BLENDER MODELLING NOTES
+Object	            Primitive	                Dimensions (m)	        Material
+Electrolyzer skid	cube	                    12×3×3	                metallic grey
+HB reactor	        cylinder	                Ø 1×H 5	                dark steel
+Ostwald absorber	cylinder	                Ø 1.5×H 8	            alloy
+AN reactor	        cylinder	                Ø 1.2×H 6	            light grey
+MED train	        array of boxes              6×2×1.8 × 6 modules	    stainless
+Sand bed	        cylinder	                Ø 4×H 9	                sandy/brown
+Solar mirror	    plane                       5×2 × 170 copies	    mirror finish
+Water tank	        cylinder	                Ø 4×H 4 × 2 copies	    blue steel
+Brine tank	        cylinder	                Ø 5×H 3 × 3 copies	    grey
+Binder tank	        cylinder	                Ø 1×H 3.5	            concrete
+NaCl pile	        cone	                    Ø 10×H 3	            white
+NH₃ tanks	        sphere‑capped cylinder	    Ø 1.5×L 3.7×2	        silver
+Heat exchangers	    cylinder	                Ø 0.8×L 2×3	            polished steel
+Pumps	            boxes / short cylinders	    ~1 m scale	
+Vehicle	            simplified cube	            4×2×2	                yellow
+
+NH3 Backup Tank - Backup ≈ 9 t NH₃ (≈ 13 m³)
+Safety preference → split into 2 horizontal bullets (6.5 m³ each).
+    - Geometry / each: Ø 1.5 m × L 3.7 m (ellipsoidal heads).
+    - Material: carbon steel, 12 mm wall, insulated + dike.
+
+
+-= OUTDOOR FACILITIES =-
+
+- Options for reflector arrays
+    Mirror type	Mirror size (m)	    Individual area (m²)	Number needed
+    Flat heliostat panel	        2 × 3 m	6	            ~285 units
+    Parabolic trough	            5 m L × 2 m Aperture	10	~170 units
+    Dish	                        6 m	28	                ~60 dishes
+
+Tower height above sand bed receiver: ~ 12 m gives good line of sight
+
+
+- NaCl Storage (solid pile)
+    Volume ≈ 47 m³ bulk
+    outdoor covered pile
+
+- Water and Brine storage
+    From volume ≈ 102 m³ (water) & 189 m³ (brine).
+    Assume stainless or FRP tanks, 8 mm shell, roofed.
+
+
+
+
+COMPELTE NOTES FOR ABOVE ESTIMATIONS
+
+Unit            Function	                        Housing	                Qty	        Key geometry primitive	        Scale driver
+ELEC	        Electrolyzer + Air Separation	    indoors	                1	        rectangular skid	            0.9 MW electrolyzer
+HB	            Haber‑Bosch loop (synth & sep)	    indoors	                1	        cylinder train	                2 t NH₃ · day⁻¹
+OSTWALD	        Nitric Acid reactors + absorber	    indoors	                1	        vertical cylinder & column	    4 t HNO₃ · day⁻¹
+AN NEUTRALIZER	NH₄NO₃ reactor + crystallizer	    indoors	                1	        stirred reactor + settling vat	5 t AN · day⁻¹
+MED	            Multi‑Effect Desal (6‑stage)        indoor hall or lean‑to	1	        horizontal stack of boxes	    102 m³ · day⁻¹ water
+MG / BINDER	    Mg(OH)₂ precipitator + carbonator	indoors	                2 vessels	vertical tanks	                1.1 t binder · day⁻¹
+THERMAL	        Sand/Rock heat store	            outdoor / partly buried	1	        vertical cylinder	            ~ 82 m³ thermal mass
+SOLAR FIELD	flat mirrors or heliostat dish	        outdoor	                many	    planar reflectors	            ≈ 1700 m²
+STORAGE	    Water, brine, binder, NaCl, NH₃ backup	indoor / outdoor	    various     tanks & piles	                from volume_sizer
+
+
+
+2. Detailed geometry (warehouse, H = 10 m)
+
+2.1 Electrolyzer & Air Separation (ELEC)
+- Process power ≈ 0.9 MW.
+- Common 1 MW skid ≈ containerized.
+- Shape: rectangular prism 3 m W × 12 m L × 3 m H.
+- Qty: 1 electrolyzer skid + 1 compressor skid + 2 air PSA modules.
+
+PSA: two vertical vessels Ø 1 m × H 3 m each.
+
+---
+
+2.2 Haber‑Bosch (Ammonia synthesis train)
+- Throughput ≈ 2 t NH₃ · day⁻¹.
+- Mini‑H‑B units often packed in one skid < 12 m long.
+- Reactor vessel ≈ Ø 1.0 m, H 5 m (350 bar steel shell, 8 cm wall).
+- Heat exchanger / cooler: 2 × shell‑and‑tube 2 m L × 0.6 m Ø.
+- Separator (NH₃ + inert) ≈ Ø 1 m × H 3 m.
+- Qty: 1 reactor, 2 coolers, 1 separator.
+
+---
+
+2.3 Ostwald (Nitric Acid)
+
+- Input: 2.1 t NH₃ · day⁻¹ → ~ 3.9 t HNO₃.
+- Catalytic burner + absorber train:
+	- Burner: Ø 0.8 m × H 3 m.
+	- Absorber column: Ø 1.5 m × H 8 m (~60% of warehouse height).
+	- Steam condenser shell: L 2 m × Ø 0.8 m.
+
+- Qty: 1 burner, 1 absorber, 1 condenser.
+
+---
+
+2.4 AN Neutralizer & Crystallizer
+- Neutralizer reactor: Ø 1.2 m × H 6 m (stirred tank).
+- Crystallizer / evaporator: Ø 2.0 m × H 3 m.
+- Filter / centrifuge: horizontal cylinder Ø 1.0 m × L 2 m.
+- Product storage (solid AN): silo Ø 2 m × H 8 m (~25–30 t).
+
+---
+
+2.5 MED Desalination Train
+- Production: ~ 102 m³ fresh · day⁻¹.
+- Compact 6‑effect unit: six rectangular shells, each ≈ 2.0 m W × 6.0 m L × 1.8 m H, stacked or stepped.
+- Footprint (train): 6 m × 10 m.
+- Condensate tank: Ø 2 m × H 3 m (10 m³)
+- Feed pump skid ≈ 2 m × 2 m × 2 m.
+
+---
+
+2.6 Mg Precipitation & Binder Line
+- Binder = 1.1 t day⁻¹ → ~ 2.8 m³ precipitation + reaction volume.
+- Precipitation reactor: Ø 1.5 m × H 4 m (PP or FRP tank).
+- Carbonation reactor: Ø 1.0 m × H 3 m.
+- Decanter / filter press area: 6 m², height 2 m.
+- Binder storage: from volumetric calc → ≈ 2.8 m³ → tank Ø 1.0 m × H 3.5 m.
+
+---
+
+2.7 Sand / Rock Thermal Storage
+
+From volume ≈ 82 m³ (from warehouse case).
+- Aim for tall cylinder (height/diameter ≈ 3).
+- Solve: V = π r² h ⇒ h ≈ 3 × 2r → choose r ≈ 2 m, h ≈ 9 m.
+- Check: π·2²·9 ≈ 113 m³ gross ≈ 82 m³ net fill (after insulation void).
+- Geometry: vertical cylinder
+	- Outer Ø ≈ 4 m, height ≈ 9 m
+	- Wall thickness ≈ 0.15 m (refractory concrete + insulation)
+
+- Top insulation dome thickness ≈ 0.5 m.
+- Qty: 1 main bed (optionally 2 smaller for redundancy).
+
+
+2.9 Water and Brine Storage
+From volume ≈ 102 m³ (water) & 189 m³ (brine).
+Assume stainless or FRP tanks, 8 mm shell, roofed.
+Service	Volume (m³)	Practical configuration	Geometry
+Water	102	    2 tanks × 51 m³	each    Ø 4 m × H 4 m
+Brine	189	    3 tanks × 63 m³	each    Ø 5 m × H 3 m
+
+
+
+vvvvvvvvvv MARKDOWN VERSION OF ALL 3 VIABLE SCALES BELOW vvvvvvvvvv
+
+---
+
+## MICRO MODULE — 1 t AN · day⁻¹ (about 1 / 5th of the "community plant")
+Excellent — having all three scales side by side will make your Blender work much more consistent and will highlight just how modular and scalable this concept really is.  
+Below you’ll find the **micro (1 t AN · day⁻¹)**, **community (5 t AN · day⁻¹)** and **regional (20 t AN · day⁻¹)** geometry summaries.  
+All use the **warehouse scenario (10 m clear height)**, so you can model them on the same coordinate grid and simply scale parts.
+
+| Subsystem | Qty | Primary shape | Typical dimensions (m) | Notes |
+|------------|-----|---------------|------------------------|-------|
+| Electrolyzer & PSA | 1 skid | box | 6 L × 2 W × 2.5 H | ~0.16 MW, container‑sized |
+| Haber‑Bosch reactor | 1 | cylinder | Ø 0.6 × H 3 | 0.4 t NH₃ · day⁻¹ |
+| Ostwald absorber | 1 | cylinder | Ø 1 × H 5 | 0.8 t HNO₃ · day⁻¹ |
+| AN reactor / crystallizer | 1 | cylinder | Ø 0.8 × H 3 | 1 t AN |
+| MED desal | 1 train | 3 boxes | 3 L × 1 W × 1 H × 3 | ≈ 20 m³ water · day⁻¹ |
+| Mg precip. & binder tanks | 2 | cylinders | Ø 0.8 × H 2.5 | 0.23 t binder · day⁻¹ |
+| Thermal sand store | 1 | cylinder | Ø 2 × H 5 | ~16 m³ |
+| Solar mirrors | 60 panels | 5 × 2 each | ~300 m² field | 18 × 18 m area |
+| Water storage | 1 | cylinder | Ø 2 × H 3 | 20 m³ |
+| Brine storage | 1 | cylinder | Ø 3 × H 3 | 38 m³ |
+| Binder storage | 1 | cylinder | Ø 0.8 × H 2 | 0.7 m³ |
+| NaCl pile | 1 | cone | Ø 5 × H 2 | 7 m³ bulk |
+| NH₃ backup | 1 small bullet | Ø 1 × L 2.5 | 2 m³ (≈ 1.8 t) |
+| Heat exchangers | 2 | cylinder | Ø 0.5 × L 1.2 | compact |
+| Pumps, filters | – | mixed | <= 1 m | small skids |
+
+**Building:** ~15 m × 10 m hall (150 m²).  
+**Outdoor:** ~0.05 ha for mirrors + small tank yard.
+
+---
+
+## 2. COMMUNITY MODULE — 5 t AN · day⁻¹ *(already detailed)*  
+
+Quick recap for scale anchoring:
+
+| Subsystem | Qty | Primary shape | Typical size (m) | Comment |
+|------------|-----|---------------|------------------|----------|
+| Electrolyzer & PSA | 1 | box | 12 × 3 × 3 | 0.9 MW skid |
+| HB reactor | 1 | cylinder | Ø 1 × H 5 | |
+| Ostwald absorber | 1 | cylinder | Ø 1.5 × H 8 | |
+| AN reactor | 1 | cylinder | Ø 1.2 × H 6 | |
+| MED train | 6 boxes | 6 × 2 × 1.8 | 10 × 6 m area |
+| Mg / Binder | 2 | Ø 1.5 × H 4 | |
+| Thermal sand store | 1 | Ø 4 × H 9 | ~82 m³ |
+| Solar field | – | troughs 5×2 m | ≈ 1700 m² (0.06 ha) |
+| Water tanks | 2 | Ø 4 × H 4 | 102 m³ total |
+| Brine tanks | 3 | Ø 5 × H 3 | 189 m³ total |
+| Binder storage | 1 | Ø 1 × H 3.5 | 2.8 m³ |
+| NaCl pile | 1 | Ø 10 × H 3 | 47 m³ bulk |
+| NH₃ backup | 2 bullets | Ø 1.5 × L 3.7 | 13 m³ total |
+
+**Building:** ~35 m × 25 m hall (875 m²).  
+**Outdoor:** ~0.6 ha solar field + 200 m² utilities area.
+
+---
+
+## 3. REGIONAL MODULE — 20 t AN · day⁻¹  
+*(≈ 4× the community module)*  
+
+| Subsystem | Qty | Primary shape | Typical dimensions (m) | Notes |
+|------------|-----|---------------|------------------------|-------|
+| Electrolyzer & PSA | 4 skids | boxes | each 12 × 3 × 3 | 3.6 MW total |
+| HB reactors | 2 | cyl train | Ø 1.6 × H 6 | parallel loops |
+| Ostwald absorber towers | 2 | cylinders | Ø 2.5 × H 10 | 16 t HNO₃ · day⁻¹ |
+| AN neutralizers | 2 | cylinders | Ø 1.8 × H 7 | 20 t AN total |
+| MED desal | 2 trains | 6 boxes × 2 sets | each 6 × 2 × 1.8 | 400 m³ water · day⁻¹ |
+| Mg binder line | 4 reactors | Ø 2 × H 5 | 4.5 t binder · day⁻¹ |
+| Thermal sand store | 1 main + 1 spare | Ø 6 × H 10 | ~330 m³ each |
+| Solar mirrors | 700 troughs | 5 × 2 m each | ≈ 6800 m² field (~0.7 ha) |
+| Water storage | 4 tanks | Ø 6 × H 5 | 410 m³ |
+| Brine storage | 4 tanks | Ø 7 × H 5 | 757 m³ |
+| Binder storage | 2 tanks | Ø 2 × H 4 | 11 m³ |
+| NaCl stock | 1 pile | Ø 25 × H 5 | 190 m³ bulk (250 t) |
+| NH₃ backup | 4 bullets | Ø 2 × L 6 | 52 m³ (~36 t) |
+| Heat exchangers | 6 | Ø 1.2 × L 3 | scaled up |
+| Pumps | many | 2× community set | – |
+
+**Main Process Hall:** ~70 m × 40 m (≈ 2800 m²).  
+**Outdoor field:** ~1 ha solar + utilities.
+
+---
+
+## Quick Comparison – Warehouse Height (10 m)
+
+| Category | 1 t AN · day⁻¹ | 5 t AN · day⁻¹ | 20 t AN · day⁻¹ |
+|-----------|----------------|----------------|----------------|
+| Electrolyzer Power | 0.17 MW | 0.9 MW | 3.6 MW |
+| MED Output | 20 m³ · d⁻¹ | 102 m³ · d⁻¹ | 407 m³ · d⁻¹ |
+| Thermal Sand Volume | 16 m³ | 82 m³ | 330 m³ |
+| Mirror Area | ~300 m² | 1 700 m² | 6 800 m² |
+| Bldg Floor Area | ≈ 150 m² | ≈ 875 m² | ≈ 2800 m² |
+| Overall Site Area (w/ solar) | 0.06 ha | 0.7 ha | 1.7 ha |
+
+---
+
+### Design cues for your Blender models
+- **Scale relationships** are nearly linear: each step (~×5 then ×4) multiplies the linear geometry by ~1.5× each time.  
+  So you can model one module and scale it by ×1.5 for regional, ÷1.5 for micro to keep proportions.
+- **Building height (10 m)** stays constant; only floor area and equipment count grow.
+- **Most large items** (sand storage, NaCl pile, absorbers) push near the roof height already, giving a strong vertical anchor inside the hall.
+- **Outdoor reflection field** dominates land use visually—everything else is a fraction of that.
+
+---
+
+### Recommended Blender workflow
+1. Import these primitives as meta objects:  
+   `cylinder`, `box`, `plane`, `cone`, `sphere-capped cylinder`.  
+2. Parent each subsystem to an *Empty* named by service for easy scaling.  
+3. For multi‑module scaling, duplicate grouped empties with scale factors (×0.67 micro, ×1 base, ×1.5 regional).  
+4. Keep solar field, sand bed, and NaCl pile as external collection in the scene for flexible placement.
+
+---
+
+### What you’ll see
+- The **1 t/day** model will look like a lab‑sized skid housed in a double‑garage‑scale building.  
+- The **5 t/day** “warehouse” will look like a compact community plant roughly one supermarket in footprint.  
+- The **20 t/day** “regional” version scales into a robust light‑industrial complex comparable to a small logistics warehouse with an adjacent solar‑thermal yard.
+
+That triple set will give reviewers a tangible sense of scale and make your later Phase 4 proposal visuals compelling and easy to follow.
