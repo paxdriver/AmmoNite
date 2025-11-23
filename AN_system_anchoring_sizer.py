@@ -7,6 +7,7 @@
 
 from dataclasses import dataclass
 from typing import Optional, Dict
+from cli_utils import br
 
 KW_PER_MW = 1000.0
 HOURS_PER_DAY = 24.0
@@ -267,8 +268,6 @@ def size(i: Inputs) -> Dict[str, float]:
 
 
 if __name__ == "__main__":
-    def br(num: int = 25):
-        return print("-"*num)
     
     # Examples
     # 1) Drive only by electricity (back-solve AN)
