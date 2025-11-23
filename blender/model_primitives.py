@@ -41,14 +41,27 @@ GROUPS = {
 
 # --- convenience --------------------------------------------------------
 def add(obj, name, mat, dx=0, dy=0, dz=0):
+    """
+    Safely rename, color, and position object.
+    Does not try to re‑link; assumes object is already in the collection.
+    """
+    # if an object with the same name already exists, skip to avoid duplicates
+    if name in bpy.data.objects:
+        bpy.data.objects[name].select_set(True)
+        bpy.context.view_layer.objects.active = bpy.data.objects[name]
+        print(f"Skipped duplicate: {name}")
+        return bpy.data.objects[name]
+
     obj.name = name
-    bpy.context.collection.objects.link(obj)
     obj.location = (dx, dy, dz)
+
+    # apply simple color
     if obj.data and hasattr(obj.data, "materials"):
-        if len(obj.data.materials) == 0:
+        if not obj.data.materials:
             obj.data.materials.append(mat)
         else:
             obj.data.materials[0] = mat
+
     return obj
 
 
@@ -58,37 +71,61 @@ def build_group(tag, x_base):
     y = 0.0   # start row counter per group
 
     def add_cylinder(name, r, h, mat):
+        nonlocal y
+        obj_name = f"{name}_{tag}"
+        if obj_name in bpy.data.objects:          # <‑‑ skip if already exists
+            print(f"Skipping existing {obj_name}")
+            y += Y_STEP
+            return bpy.data.objects[obj_name]
+
         bpy.ops.mesh.primitive_cylinder_add(radius=r, depth=h)
         obj = bpy.context.active_object
         obj.rotation_euler[0] = radians(0)
-        add(obj, f"{name}_{tag}", mat, x_base, y, Z_BASE)
-        nonlocal y
+        add(obj, obj_name, mat, x_base, y, Z_BASE)
         y += Y_STEP
         return obj
 
     def add_box(name, sx, sy, sz, mat):
+        nonlocal y
+        obj_name = f"{name}_{tag}"
+        if obj_name in bpy.data.objects:          # <‑‑ skip if already exists
+            print(f"Skipping existing {obj_name}")
+            y += Y_STEP
+            return bpy.data.objects[obj_name]
         bpy.ops.mesh.primitive_cube_add(size=1)
         obj = bpy.context.active_object
         obj.scale = (sx / 2, sy / 2, sz / 2)
         add(obj, f"{name}_{tag}", mat, x_base, y, Z_BASE)
-        nonlocal y
+
         y += Y_STEP
         return obj
 
     def add_plane(name, sx, sy, mat):
+        nonlocal y
+        obj_name = f"{name}_{tag}"
+        if obj_name in bpy.data.objects:          # <‑‑ skip if already exists
+            print(f"Skipping existing {obj_name}")
+            y += Y_STEP
+            return bpy.data.objects[obj_name]
         bpy.ops.mesh.primitive_plane_add(size=1)
         obj = bpy.context.active_object
         obj.scale = (sx / 2, sy / 2, 1)
         add(obj, f"{name}_{tag}", mat, x_base, y, Z_BASE)
-        nonlocal y
+
         y += Y_STEP
         return obj
 
     def add_cone(name, r, h, mat):
+        nonlocal y
+        obj_name = f"{name}_{tag}"
+        if obj_name in bpy.data.objects:          # <‑‑ skip if already exists
+            print(f"Skipping existing {obj_name}")
+            y += Y_STEP
+            return bpy.data.objects[obj_name]
         bpy.ops.mesh.primitive_cone_add(radius1=r, depth=h)
         obj = bpy.context.active_object
         add(obj, f"{name}_{tag}", mat, x_base, y, Z_BASE)
-        nonlocal y
+
         y += Y_STEP
         return obj
 
