@@ -1,3 +1,4 @@
+# Process Overview
 1 - Sun → heat + electricity
 Solar field heats a sand/rock bed and powers the electrolyzers
 
@@ -22,16 +23,18 @@ Precipitate Mg, turn into binder, stockpile salt
 8 - O₂ / CO₂ integration with WWTP, NH₃ backup
 Some O₂ to WWTP aeration when available; NH₃ stored as backup fuel
 
-Shorthand References
-MED = Multi-Effect Distillation
-PSA = Pressure Swing Adsorption
-PEM = Proton Exchange Membrane
+---
 
--------------------------------------------
+# Shorthand References
+MED = Multi-Effect Distillation<br>
+PSA = Pressure Swing Adsorption<br>
+PEM = Proton Exchange Membrane<br>
 
-1. Solar field and thermal storage
+---
 
-What it does
+1. ## Solar field and thermal storage
+
+### What it does
 
 - Solar field focuses sunlight onto a receiver (on or near the sand tank).
 - Hot fluid (air, or a simple heat‑transfer oil/water loop) carries heat into the sand/rock/salt bed.
@@ -43,7 +46,7 @@ During operation, that heat is drawn off to:
     - keep temperatures stable through cloudy periods.
 
 
-How it operates
+### How it operates
 
 Daily cycle:
 1. Morning charge
@@ -62,20 +65,19 @@ Daily cycle:
 	- Operators watch bed temperature and may ramp down plant if a long cloudy period is forecast.
 
 
-Equipment & materials:
+### Equipment & materials:
 - Sand/rock tank: reinforced concrete or steel shell + refractory/insulation inside (cheap bulk materials, high thermal mass, tolerant of high temperature)
 - Receivers & piping: carbon steel or low‑alloy steel; some stainless where water/steam is involved.
 - Fans/pumps: standard industrial units.
 
-Operator tasks:
+### Operator tasks:
 - Start/stop circulation pumps based on sun/temperature.
 - Monitor bed temperature trends in DCS (control system).
 - Periodic inspection for insulation damage, leaks in piping, mirror alignment.
 
+---
 
-
-
-2. Electrolysis & air separation (ELEC)
+2. ## Electrolysis & air separation (ELEC)
 
 2.1 Electrolyzers – how we get H₂ and O₂
     Principle: water electrolysis splits liquid water into hydrogen and oxygen using DC electricity.
@@ -151,7 +153,7 @@ Operators:
 - Monitor compressor, filter cartridges, PSA cycle times.
 - Replace adsorbent every few years.
 
-
+---
 
 3. Haber‑Bosch (NH₃ synthesis)
 
@@ -179,60 +181,40 @@ Loop components:
 
 4. Cooling & separation:
 	- Hot gas exits reactor, goes through heat exchanger (preheats incoming gas).
-
 	- Further cooled; NH₃ condenses to liquid.
-
 	- Liquid NH₃ drawn off; unreacted N₂ + H₂ recycled back.
-
 
 At our modest scale, you’d likely run at the lower end of commercial pressures, maybe 80–100 bar, with tailored equipment.
 
 Materials
-
 - Reactor vessel: thick‑wall alloy steel for high pressure and temperature.
-
 - Catalyst: iron‑based, supplied in pellets. Lifespan years, but can be partially rejuvenated.
-
 - Piping: high‑pressure carbon or low alloy steel.
 
 Operators
-
 - Start‑up: careful heat‑up and pressure ramp to avoid thermal stress.
-
 - Routine:
 	- Monitor loop pressure, conversion, recycle ratio.
-
 	- Check for H₂ leaks, lube oil systems.
-
 	- Occasionally sample ammonia for purity.
-
-
 - Maintenance:
 	- Every few years: catalyst change‑out by specialists.
-
 	- Compressor overhauls as scheduled.
 
 
 Material handling is all gaseous/liquid via pipes and valves; no buckets.
 
-
 ---
 
 4. Ostwald (Nitric Acid)
 
-Chemistry
-
-
-Three main steps:
-
+Chemistry in 3 main stages
 
 1. NH₃ oxidation on Pt/Rh gauze:
 	- \(4 NH₃ + 5 O₂ → 4 NO + 6 H₂O\) (at 800–900 °C).
 
-
 2. NO oxidation in gas phase:
 	- \(2 NO + O₂ → 2 NO₂\) (as gas cools).
-
 
 3. NO₂ absorption in water:
 	- \(3 NO₂ + H₂O → 2 HNO₃ + NO\) (NO is recycled).
@@ -243,49 +225,35 @@ Mechanism in equipment
 1. Gas feed: NH₃ gas (from HB loop) plus O₂ / air.
 	- In your concept, electrolyzer O₂ covers ~75% of O₂; the rest is air.
 
-
 2. Burner / converter:
 	- Mixture passes through a Pt/Rh wire gauze at ~900 °C.
-
 	- Very rapid catalytic combustion → NO + steam.
-
 
 3. Cooling & oxidation:
 	- Hot NO+steam cooled in waste‑heat boiler (generates steam).
-
 	- As gas cools, NO oxidizes to NO₂.
-
 
 4. Absorption tower:
 	- Tall column with stainless or lined internals.
-
 	- Water / weak nitric acid streams trickle down over packing or trays.
-
 	- NO₂ enters from bottom, contacts descending liquid:
 		- Forms HNO₃ in solution.
-
-
 	- Off‑gas (NO + some NO₂ + O₂) is partly recycled to the converter or sent to a tail‑gas treatment unit.
-
 
 Materials
 
 - Converter shell: high‑temperature alloy steel; Pt/Rh gauzes are precious and replaced periodically.
-
 - Absorber: stainless steel 316L or nitric‑resistant alloy, rubber‑lined carbon steel is also used sometimes for cost.
-
 - Piping: stainless for acid, carbon steel for air.
+
 
 Operators
 
 - Adjust NH₃:air/O₂ ratio to maintain catalyst temperature and conversion.
-
 - Monitor tower temperature profile, acid strength, and NOₓ emissions.
-
 - Periodic Pt gauze replacement (careful, expensive).
 
 Again, everything is pumped or blown; operators don’t manually move acid.
-
 
 ---
 
