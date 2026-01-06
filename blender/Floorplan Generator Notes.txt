@@ -79,6 +79,21 @@ Checklist / Roadmap
         - All translations in the XY‑plane only.
         - Z grounding maintained.
 
+    FOLDER STRUCTURE BATCH PLAN GENERATIONS
+    /blender/
+    ├── layouts/
+    │   ├── seed_42/
+    │   │   ├── layout_00/
+    │   │   │   ├── meta.json
+    │   │   │   ├── transforms.json
+    │   │   │   ├── penalties.csv
+    │   │   │   └── image.png
+    │   │   ├── layout_01/
+    │   │   ├── layout_02/
+    │   │   └── ...
+    │   └── summary_seed_42.csv
+    └── floorplan_generator_test-02.blend
+
 9. Iterate / Extend (Future Steps)
 	- Add pathfinding or constraint placement later once we have the baseline working.
 
