@@ -1,0 +1,8 @@
+Equipment_A,Equipment_B,Distance_m,Preferred_m,Tolerance_m,Weight,Penalty
+HB_Reactor_micro,Ostwald_Absorber_micro,4.12,3.0,2.0,2.0,0.0
+Ostwald_Absorber_micro,AN_Reactor_micro,8.0,4.0,2.0,2.0,4.005
+Electrolyzer_Skid_micro,HB_Reactor_micro,27.15,5.0,3.0,1.5,28.73
+MED_Module_micro,Brine_Tank_micro,13.47,3.0,2.0,1.0,8.475
+Water_Tank_micro,Brine_Tank_micro,17.01,4.0,2.0,1.0,11.007
+NaCl_Pile_micro,Brine_Tank_micro,7.02,6.0,3.0,0.8,0.0
+NH3_Tank_micro,AN_Reactor_micro,21.3,8.0,3.0,1.2,12.361

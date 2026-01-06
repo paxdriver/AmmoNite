@@ -1,0 +1,93 @@
+Checklist / Roadmap
+
+1. Environment Initialization
+	- Purpose: verify Blender environment, import libraries (bpy, mathutils).
+	- Confirm the expected object naming convention from model_primitives_enhanced.py (e.g. "HB_Reactor_micro", "HB_Reactor_community", "HB_Reactor_regional").
+
+    Export a 2D footprint of each object
+    Each mesh (reactor, tank, skid) → bounding box → footprint rectangle:
+    bbox = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
+    min_x = min(v.x for v in bbox)
+    max_x = max(v.x for v in bbox)
+    min_y = min(v.y for v in bbox)
+    max_y = max(v.y for v in bbox)
+    width = max_x - min_x
+    depth = max_y - min_y
+
+2. Collect Target Objects
+	- Scan scene for all objects matching known subsystem prefixes.
+	- Group them by module scale (micro, community, regional).
+
+    Define a 2D layout rule system
+    Use Python dicts for adjacency priorities and zones:
+    rules = {
+        "Electrolyzer_Skid": {"group": "process", "requires": ["HB_Reactor"], "clearance": 2.0},
+        "HB_Reactor": {"adjacent_to": ["Ostwald_Absorber"], "clearance": 1.5},
+        "Ostwald_Absorber": {"adjacent_to": ["AN_Reactor"], "clearance": 2.0},
+        "MED_Module": {"zone": "utilities", "clearance": 2.0},
+        "Admin": {"zone": "support", "clearance": 1.0},
+    }
+
+3. Extract Object Dimensions and Footprints
+	- Compute each object’s bounding box (width, depth, height).
+	- Derive footprint rectangles as 2D shapes on the XY plane.
+	- Ensure each object’s base sits at Z = 0 (safely grounded).
+
+    Procedurally place items (greedy + separation)
+    Example: lay down the largest elements first, then fill in utilities and walkways.
+    You can randomly perturb arrangement and score:
+
+    score = dist_penalty + adj_bonus + clearance_penalty
+
+4. Define Placement Rules
+	- Temporary version: simple grid / lined layout.
+	- Later: adjacency matrix and clearance spacing.
+
+5. Implement Basic Placement Logic
+	- Within each module group, arrange objects into rows or zones.
+	- Keep configurable aisle spacing.
+	- Position each object accordingly.
+
+6. Apply Placement and Grounding
+	- Move all selected objects so their lowest vertex touches Z = 0.
+	- Apply the new XY placement.
+
+7. (Optional) Draw Floor Outline
+	- Add plane(s) under each group to represent building footprints and aisles.
+
+    Design
+    Each piece of equipment is a node.
+    
+    Each relationship (e.g., “HB_Reactor ↔ Ostwald_Absorber”) is an edge with:
+    - preferred_distance_m
+    - tolerance_m
+    - weight (penalty for deviation).
+
+    We’ll define a simple starter adjacency matrix, compute centroid distances, then save a report.
+
+8. Validate Results
+	- Check coordinate distribution, object overlaps, Z‑alignment.
+    Step 8 goal: Adjacency‑Based Relocation (Local Optimization)
+
+    a) For each adjacency pair, compute directional vector from equipment A → B.
+    b) If the distance is greater than the preferred + tolerance, nudge them toward each other. If it’s smaller than preferred − tolerance, separate slightly.
+    c) Apply small movement increments within each zone’s bounding box so nothing crosses zone borders or overlaps others’ clearances.
+    d) Iterate several passes (e.g., 5–10 iterations), recomputing penalties each time, until improvement plateaus.
+
+    We’ll make the system conservative:
+        - Movement capped (say ≤ 0.5 m per iteration).
+        - All translations in the XY‑plane only.
+        - Z grounding maintained.
+
+9. Iterate / Extend (Future Steps)
+	- Add pathfinding or constraint placement later once we have the baseline working.
+
+----------------------------------------------------------
+
+HB ↔ Ostwald	Close (core process)	4 m apart (good, penalty 0)
+Ostwald ↔ AN	Should be medium‑close (~4 m)	8 m apart (too far, penalty 4)
+Electrolyzer ↔ HB	Should be somewhat near (~5 m)	27 m apart (very far, penalty 28.7)
+MED ↔ Brine	Should be adjacent	13 m apart (penalty 8.5)
+Water ↔ Brine	Should be co‑located	17 m apart (penalty 11)
+NaCl ↔ Brine	Acceptable gap	7 m (within tolerance, 0)
+NH₃ ↔ AN	Should be nearby (feed line)	21 m (penalty 12.4)
